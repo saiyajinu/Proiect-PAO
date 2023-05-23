@@ -96,14 +96,7 @@ public class Student extends Person {
 
     @Override
     public String toString() {
-        return "Student{" + super.toString() +
-                "year=" + year +
-                ", group='" + group + '\'' +
-                ", isForeign=" + isForeign +
-                ", isMinority=" + isMinority +
-                ", motherFName='" + motherFName + '\'' +
-                ", fatherFName='" + fatherFName + '\'' +
-                ", grades= " + grades +
-                '}';
+        return  super.toString() +
+                ", Grades = " + grades + '\n';
     }
 }

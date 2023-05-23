@@ -32,4 +32,8 @@ public class StudentRepository {
     public Student[] getAll() {
         return storedStudents;
     }
+
+    public Student getStudentById(Integer id){ return storedStudents[id-1000];}
 }
+
+

@@ -30,6 +30,8 @@ public class StudentController {
         return studentService.getAllStudents();
     }
 
+    public Student getStudentById(Integer id){ return studentService.getStudentById(id);}
+
     private String capitalizeString (String str) {
         return str.substring(0,1).toUpperCase() + str.substring(1).toLowerCase();
     }

@@ -2,34 +2,46 @@ package gradebook.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 
 public class Group {
-    private String groupName;
-    private List<Student> students;
+    private String groupNo;
+    private TreeSet<Student> students;
 
     public Group() {
-        this.groupName = "null";
-        this.students = new ArrayList<Student>();
+        this.groupNo = "null";
+        this.students = new TreeSet<Student>(new StudentNameComparator());
     }
 
-    public Group(String groupName, List<Student> students) {
-        this.groupName = groupName;
+    public Group(String groupNo){
+        this.groupNo = groupNo;
+        this.students = new TreeSet<Student>(new StudentNameComparator());
+    }
+    public Group(String groupNo, TreeSet<Student> students) {
+        this.groupNo = groupNo;
         this.students = students;
     }
 
-    public String getGroupName() {
-        return groupName;
+    public String getGroupNo() {
+        return groupNo;
     }
 
-    public void setGroupName(String groupName) {
-        this.groupName = groupName;
+    public void setGroupNo(String groupNo) {
+        this.groupNo = groupNo;
     }
 
-    public List<Student> getStudents() {
+    public TreeSet<Student> getStudents() {
         return students;
     }
 
-    public void setStudents(List<Student> students) {
+    public void setStudents(TreeSet<Student> students) {
         this.students = students;
     }
+    public void addStudent(Student student){students.add(student);}
+
+    @Override
+    public String toString(){
+        return "Group " + groupNo + "\n" + students + '\n';
+    }
+
 }

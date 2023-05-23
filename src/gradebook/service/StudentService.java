@@ -29,4 +29,8 @@ public class StudentService {
     public Student[] getAllStudents() {
         return this.studentRepository.getAll();
     }
+
+    public Student getStudentById(Integer id){ return this.studentRepository.getStudentById(id);}
 }
+
+

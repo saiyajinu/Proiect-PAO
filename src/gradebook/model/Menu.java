@@ -1,5 +1,6 @@
 package gradebook.model;
 
+import gradebook.controller.GroupController;
 import gradebook.controller.ProfessorController;
 import gradebook.controller.StudentController;
 
@@ -10,14 +11,17 @@ public class Menu {
     public void Menu(){
         StudentController studentController = new StudentController();
         ProfessorController professorController = new ProfessorController();
+        GroupController groupController = new GroupController();
 
-        studentController.addStudent("Marian", "Ionescu", 1000, "123123", 2, "23", false, false, "mama", "tata");
+        studentController.addStudent("Marian", "Ionescu", 1000, "123123", 1, "101", false, false, "mama", "tata");
+        studentController.addStudent("Adrian", "Sefcic", 1000, "999999", 1, "101", false, false, "amam", "atat");
         Student[] allStudents = studentController.getAllStudents();
         studentController.addGrade(1000, "math", 10);
         studentController.addGrade(1000, "math", 9);
-
-
-
+        studentController.addGrade(1001, "math", 10);
+        studentController.addGrade(1001, "math", 10);
+        groupController.addStudent("101", studentController.getStudentById(1000));
+        groupController.addStudent("101", studentController.getStudentById(1001));
 
 
 
@@ -31,6 +35,8 @@ public class Menu {
             System.out.println("4.Read All Professors");
             System.out.println("5.Add grade");
             System.out.println("6.Average grade for Student");
+            System.out.println("7.Read Student by ID");
+            System.out.println("8.Read Group by Number");
             System.out.println("0.Stop");
             ans = Integer.valueOf(sc.nextLine());
             String fstNm, lstNm, phnNo;
@@ -62,6 +68,7 @@ public class Menu {
                     System.out.print("Father name: ");
                     fthrNm = sc.nextLine();
                     studentController.addStudent(fstNm, lstNm, id, phnNo, year, group, isF, isM, mthNm, fthrNm);
+                    groupController.addStudent(group, studentController.getStudentById(id));
                     System.out.println();
                     break;
                 case 2:
@@ -83,7 +90,7 @@ public class Menu {
                     System.out.println();
                     break;
                 case 3:
-                    //Student[] allStudents = studentController.getAllStudents();
+                    allStudents = studentController.getAllStudents();
                     System.out.println(Arrays.toString(allStudents));
                     System.out.println();
                     break;
@@ -110,6 +117,19 @@ public class Menu {
                     System.out.print("Student's ID: ");
                     id = Integer.valueOf(sc.nextLine());
                     System.out.println(studentController.getAvgGrade(id));
+                    break;
+                case 7:
+                    System.out.println("Searching student by id...");
+                    System.out.print("Student ID: ");
+                    id = Integer.valueOf(sc.nextLine());
+                    Student stud = studentController.getStudentById(id);
+                    System.out.println(stud);
+                    break;
+                case 8:
+                    System.out.println("Groups: 100, 101, 102, 201, 202, 203, 301, 302, 303");
+                    System.out.print("Group Number: ");
+                    String grNo = sc.nextLine();
+                    System.out.println(groupController.getGroupByNo(grNo));
                     break;
                 case 0:
                     break;
