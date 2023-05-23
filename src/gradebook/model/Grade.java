@@ -1,21 +1,20 @@
 package gradebook.model;
-
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Grade {
     String subject;
     Integer value;
-    String date;
+    LocalDate date;
 
     public Grade() {
         this.value = 0;
-        this.date = "null";
+        this.date = LocalDate.now();
     }
 
-    public Grade(String subject, Integer value, String date) {
+    public Grade(String subject, Integer value) {
         this.subject = subject;
         this.value = value;
-        this.date = date;
+        this.date = LocalDate.now();
     }
 
     public String getSubject() {
@@ -34,12 +33,12 @@ public class Grade {
         this.value = grade;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
     public void setDate(String date) {
-        this.date = date;
+        this.date = LocalDate.now();
     }
 
     @Override

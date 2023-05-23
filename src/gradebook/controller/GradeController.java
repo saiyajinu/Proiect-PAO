@@ -14,8 +14,8 @@ public class GradeController {
         this.gradeService = new GradeService();
     }
 
-    public boolean addGrade(String subject, Integer value, String date) {
-        return gradeService.addGrade(subject, value, date);
+    public boolean addGrade(String subject, Integer value) {
+        return gradeService.addGrade(subject, value);
     }
 
     public Grade[] getAllGrades() {

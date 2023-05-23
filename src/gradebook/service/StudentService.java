@@ -17,9 +17,13 @@ public class StudentService {
         return this.studentRepository.add(student);
     }
 
-    public void addGradeToStudent(Integer id, String subject, Integer value, String date){
-        Grade grade = new Grade(subject, value, date);
+    public void addGradeToStudent(Integer id, String subject, Integer value){
+        Grade grade = new Grade(subject, value);
         this.studentRepository.addGrade(id, grade);
+    }
+
+    public double getAvgGrade(Integer id){
+        return this.studentRepository.getAvgGrade(id);
     }
 
     public Student[] getAllStudents() {

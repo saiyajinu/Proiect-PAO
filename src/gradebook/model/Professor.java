@@ -3,19 +3,19 @@ package gradebook.model;
 import java.util.ArrayList;
 
 public class Professor extends Person{
-    String mail;
-    ArrayList<String> classes;
+    private String mail;
+    private String subject;
 
     public Professor() {
         super();
         this.mail = "null";
-        this.classes = new ArrayList<String>();
+        this.subject = "null";
     }
 
-    public Professor(String firstName, String lastName, Integer id, String phoneNumber, String mail, ArrayList<String> classes) {
+    public Professor(String firstName, String lastName, Integer id, String phoneNumber, String mail, String subject) {
         super(firstName, lastName, id, phoneNumber);
         this.mail = mail;
-        this.classes = classes;
+        this.subject = subject;
     }
 
     public String getMail() {
@@ -26,19 +26,19 @@ public class Professor extends Person{
         this.mail = mail;
     }
 
-    public ArrayList<String> getClasses() {
-        return classes;
+    public String getSubject() {
+        return subject;
     }
 
-    public void setClasses(ArrayList<String> classes) {
-        this.classes = classes;
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
     @Override
     public String toString() {
         return "Professor{" + super.toString() +
                 "mail='" + mail + '\'' +
-                ", classes=" + classes +
+                "subject='" + subject + '\'' +
                 '}';
     }
 }

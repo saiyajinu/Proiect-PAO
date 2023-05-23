@@ -14,8 +14,8 @@ public class GradeService {
         gradeRepository = new GradeRepository();
     }
 
-    public boolean addGrade(String subject, Integer value, String date) {
-        Grade grade = new Grade(subject, value, date);
+    public boolean addGrade(String subject, Integer value) {
+        Grade grade = new Grade(subject, value);
         return this.gradeRepository.add(grade);
     }
 

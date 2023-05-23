@@ -13,10 +13,10 @@ public class ProfessorController {
         this.professorService = new ProfessorService();
     }
 
-    public boolean addProfessor(String firstName, String lastName, Integer id, String phoneNumber, String mail, ArrayList<String> classes) {
+    public boolean addProfessor(String firstName, String lastName, Integer id, String phoneNumber, String mail, String subject) {
         firstName = capitalizeString(firstName);
         lastName = capitalizeString(lastName);
-        return professorService.addProfessor(firstName, lastName, id, phoneNumber, mail, classes);
+        return professorService.addProfessor(firstName, lastName, id, phoneNumber, mail, subject);
     }
 
     public Professor[] getAllProfessors() {

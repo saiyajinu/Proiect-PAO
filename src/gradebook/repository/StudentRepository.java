@@ -24,8 +24,10 @@ public class StudentRepository {
     }
 
     public void addGrade(Integer id, Grade grade){
-        storedStudents[id].addGrade(grade);
+        storedStudents[id-1000].addGrade(grade);
     }
+
+    public Double getAvgGrade(Integer id){ return storedStudents[id-1000].getAvgGrade();}
 
     public Student[] getAll() {
         return storedStudents;

@@ -36,6 +36,16 @@ public class Student extends Person {
     public void addGrade(Grade grade){
         grades.add(grade);
     }
+
+    public Double getAvgGrade(){
+        Double sum = 0.0;
+        if (grades.isEmpty())
+            return 0.0;
+        for(int i = 0; i < grades.size(); i++){
+            sum = sum + grades.get(i).getValue();
+        }
+        return sum/grades.size();
+    }
     public Integer getYear() {
         return year;
     }
@@ -92,7 +102,8 @@ public class Student extends Person {
                 ", isForeign=" + isForeign +
                 ", isMinority=" + isMinority +
                 ", motherFName='" + motherFName + '\'' +
-                ", fatherFName='" + fatherFName + '\'' + grades +
+                ", fatherFName='" + fatherFName + '\'' +
+                ", grades= " + grades +
                 '}';
     }
 }

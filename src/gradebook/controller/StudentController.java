@@ -19,8 +19,12 @@ public class StudentController {
         return studentService.addStudent(firstName, lastName, id, phoneNumber, year, group, isForeign, isMinority, motherFName, fatherFName);
     }
 
-    public void addGrade(Integer id, String subject, Integer value, String date){
-        studentService.addGradeToStudent(id, subject, value, date);
+    public void addGrade(Integer id, String subject, Integer value){
+        studentService.addGradeToStudent(id, subject, value);
+    }
+
+    public Double getAvgGrade(Integer id){
+        return studentService.getAvgGrade(id);
     }
     public Student[] getAllStudents() {
         return studentService.getAllStudents();
