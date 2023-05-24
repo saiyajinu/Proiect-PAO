@@ -1,6 +1,7 @@
 package gradebook.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Student extends Person {
@@ -94,6 +95,41 @@ public class Student extends Person {
         this.fatherFName = fatherFName;
     }
 
+    public HashMap<String, Double> computeGrades(){
+        HashMap<String, List<Double>> preComputedGrades = new HashMap<String, List<Double>>();
+        for(int i = 0; i < grades.size(); i++){
+            if(!preComputedGrades.containsKey(grades.get(i).getSubject())){
+                preComputedGrades.put(grades.get(i).getSubject(), List.of(Double.valueOf(grades.get(i).getValue()), 1.0));
+            }
+            else{
+                Double oldValue = (preComputedGrades.get(grades.get(i).getSubject())).get(0);
+                Double newCount = (preComputedGrades.get(grades.get(i).getSubject())).get(1)+1;
+                preComputedGrades.put(grades.get(i).getSubject(), List.of(oldValue + Double.valueOf(grades.get(i).getValue()),newCount));
+            }
+        }
+        HashMap<String, Double> computedGrades = new HashMap<String,Double>();
+        for (String i : preComputedGrades.keySet()){
+            computedGrades.put(i, preComputedGrades.get(i).get(0)/preComputedGrades.get(i).get(1));
+        }
+        return computedGrades;
+    }
+    public void printEachGradesSituation(){
+        HashMap<String, Double> computedGrades = this.computeGrades();
+        System.out.println(this.getFirstName() + ' ' + this.getLastName());
+        for (String i : computedGrades.keySet()){
+            System.out.println(i + ' ' + computedGrades.get(i));
+        }
+        System.out.println();
+    }
+
+    public void computeAndPrintAllGradesSituation(){
+        HashMap<String, Double> computedGrades = this.computeGrades();
+        Double gradesSum = 0.0;
+        for (Double i : computedGrades.values()) {
+            gradesSum = gradesSum + i;
+        }
+        System.out.println(this.getFirstName() + ' ' + this.getLastName() + " - " + gradesSum / computedGrades.size());
+    }
     @Override
     public String toString() {
         return  super.toString() +

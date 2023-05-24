@@ -39,6 +39,14 @@ public class Group {
     }
     public void addStudent(Student student){students.add(student);}
 
+    public void printAllStudentsAndTheirGrade(){
+        for (Student student : students)
+        {
+            student.computeAndPrintAllGradesSituation();
+        }
+        System.out.println();
+    }
+
     @Override
     public String toString(){
         return "Group " + groupNo + "\n" + students + '\n';
